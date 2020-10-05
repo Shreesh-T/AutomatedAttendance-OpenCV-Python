@@ -6,6 +6,7 @@ from time import strftime
 import threading
 import tkinter as tk
 from PIL import Image, ImageTk
+from datetime import datetime
 
 
 root = Tk()
@@ -92,7 +93,8 @@ def facerecog():
                     print("Already Marked? : "+ str(alreadyMarked))
                     if(alreadyMarked==0):
                         writer = csv.writer(csvFile)
-                        writer.writerow([id,name,status])
+                        strTime = datetime.now().strftime("%H:%M:%S")
+                        writer.writerow([id,name,status,strTime])
                     csvFile.close()
 
                 if(alreadyMarked == 0):
